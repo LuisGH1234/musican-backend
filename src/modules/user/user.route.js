@@ -6,5 +6,6 @@ const router = express.Router();
 router.use(verify);
 
 router.get("/", UserController.getAll);
+router.get("/:id", UserController.getOne);
 
 export default router;

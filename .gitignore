@@ -29,3 +29,4 @@ bin-release/
 #modules
 node_modules/
 dist/
+certs/
