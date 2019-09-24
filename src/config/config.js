@@ -24,10 +24,13 @@ export class Config {
     static get env() {
         return env.NODE_ENV || "development";
     }
+
+    static get PORT() {
+        return process.env.PORT || 3000;
+    }
 }
 
 export const Env = {
     PRODUCTION: "production",
     DEVELOPMENT: "development",
 };
-

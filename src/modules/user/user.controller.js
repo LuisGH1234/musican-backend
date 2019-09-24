@@ -20,4 +20,14 @@ export class UserController {
             next(error);
         }
     }
+
+    static getLeadeboard(req, res, next) {
+        try {
+            console.log("asasasas");
+            const users = User.getLeaderBoard();
+            return res.send(new ListResponse(users));
+        } catch (error) {
+            next(error);
+        }
+    }
 }

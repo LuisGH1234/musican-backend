@@ -5,6 +5,7 @@ import { verify } from "../../middleware";
 const router = express.Router();
 router.use(verify);
 
+router.get("/leaderboard", UserController.getLeadeboard);
 router.get("/", UserController.getAll);
 router.get("/:id", UserController.getOne);
 

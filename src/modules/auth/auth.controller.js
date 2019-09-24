@@ -9,7 +9,6 @@ export class AuthController {
             const { email = "", password } = req.body;
             const user = await User.findForLogin(email);
             if (!user) return res.status(401).send(new UnauthorizedError("Invalid credentials"));
-            // console.log(user);
 
             const isValid = await Password.compare(password, user.password);
             if (!isValid) return res.status(401).send(new UnauthorizedError("Invalid credentials"));
@@ -25,7 +24,7 @@ export class AuthController {
     static async register(req, res, next) {
         try {
             const { body: user } = req;
-            console.log(user);
+            // console.log(user);
             if (user.password !== user.confirmPassword)
                 return res.status(400).send(new Error("las contraseñas no coinciden"));
 
