@@ -1,10 +1,10 @@
 import mysql from "mysql";
-import { Config } from "./config";
+import { Config, Env } from "./config";
 import fs from "fs";
 import { join } from "path";
 import { promisify } from "util";
 // NODE_ENV: production
-const env = process.env.NODE_ENV || "development";
+const env = Config.env
 
 const ssl = {
     ca: fs.readFileSync(join(__dirname + "../../../certs/server-ca.pem")),

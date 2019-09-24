@@ -20,4 +20,14 @@ export class Config {
     static get database() {
         return env.DATABASE || "musican";
     }
+
+    static get env() {
+        return env.NODE_ENV || "development";
+    }
 }
+
+export const Env = {
+    PRODUCTION: "production",
+    DEVELOPMENT: "development",
+};
+
