@@ -1,5 +1,4 @@
-require("dotenv").config();
-// console.log(process.env)
+// require("dotenv").config();
 import "@babel/polyfill";
 import express from "express";
 import morgan from "morgan";
@@ -39,6 +38,5 @@ app.use((e, req, res, next) => {
 
 app.listen(app.get("port"), err => {
     if (err) console.log(err);
-    // console.log(process.env.NODE_ENV);
     console.log(`Server on port: ${app.get("port")} :: ${Config.env}`);
 });

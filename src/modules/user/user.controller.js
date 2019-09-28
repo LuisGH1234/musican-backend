@@ -23,11 +23,14 @@ export class UserController {
 
     static getLeadeboard(req, res, next) {
         try {
-            console.log("asasasas");
             const users = User.getLeaderBoard();
             return res.send(new ListResponse(users));
         } catch (error) {
             next(error);
         }
+    }
+
+    static getMe(req, res, next) {
+        return res.send(req.user);
     }
 }

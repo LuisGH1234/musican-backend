@@ -6,11 +6,15 @@ import { promisify } from "util";
 // NODE_ENV: production
 const env = Config.env;
 
-const ssl = {
-    ca: fs.readFileSync(join(__dirname + "../../../certs/server-ca.pem")),
-    key: fs.readFileSync(join(__dirname + "../../../certs/client-key.pem")),
-    cert: fs.readFileSync(join(__dirname + "../../../certs/client-cert.pem")),
-};
+const ssl =
+    env === Env.DEVELOPMENT
+        ? {
+              ca: fs.readFileSync(join(__dirname + "../../../certs/server-ca.pem")),
+              key: fs.readFileSync(join(__dirname + "../../../certs/client-key.pem")),
+              cert: fs.readFileSync(join(__dirname + "../../../certs/client-cert.pem")),
+          }
+        : undefined;
+
 export const config = {
     connectionLimit: Config.connectionLimit,
     host: Config.host,
@@ -18,8 +22,8 @@ export const config = {
     password: Config.password,
     database: Config.database,
     charset: "utf8mb4",
-    ssl: env == Env.DEVELOPMENT ? ssl : undefined,
-    socketPath: env == Env.PRODUCTION ? "/cloudsql/musican:us-central1:musican-bd" : undefined,
+    ssl,
+    socketPath: env === Env.PRODUCTION ? "/cloudsql/musican:us-central1:musican-bd" : undefined,
 };
 
 export const poolConn = mysql.createPool(config);
