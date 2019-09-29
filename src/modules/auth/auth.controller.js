@@ -14,7 +14,7 @@ export class AuthController {
             if (!isValid) return res.status(401).send(new UnauthorizedError("Invalid credentials"));
             // exp: Math.floor(Date.now() / 1000) + 60 * 60,
             delete user.password;
-            const token = jwt.sign({ user }, "secretkey", { expiresIn: "1h" });
+            const token = jwt.sign({ user }, "secretkey", { expiresIn: "7d" });
             return res.send(new TokenResponse(token));
         } catch (error) {
             next(error);

@@ -28,6 +28,7 @@ export class User {
     static async getOne(id) {
         const sql = `${select.get} from usuario where id = ?`;
         const user = (await db.query(sql, [id]))[0][0];
+        if (!user) return null; 
 
         const tipoMembresiaSql = "select * from tipoMembresia where id = ?";
         const tipoMembresia = await db.query(tipoMembresiaSql, [user.tipoMembresiaId]);
@@ -40,6 +41,7 @@ export class User {
     static async findForLogin(email) {
         const userSql = `${select.get}, password from usuario where email = ?`;
         const user = (await db.query(userSql, [email]))[0][0];
+        if (!user) return null; 
 
         const tipoMembresiaSql = "select * from tipoMembresia where id = ?";
         const tipoMembresia = await db.query(tipoMembresiaSql, [user.tipoMembresiaId]);
@@ -71,6 +73,26 @@ export class User {
             {
                 nombre: "Luis Galindo",
                 score: 4000,
+            },
+            {
+                nombre: "Daniel Muñoz",
+                score: 3600,
+            },
+            {
+                nombre: "Peter Gleixner",
+                score: 2999,
+            },
+            {
+                nombre: "Marcelo Ríos",
+                score: 2500,
+            },
+            {
+                nombre: "Daniel Aragon",
+                score: 1689,
+            },
+            {
+                nombre: "Gonzalo Léon",
+                score: 999,
             },
         ];
     }

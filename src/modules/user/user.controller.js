@@ -15,6 +15,7 @@ export class UserController {
         try {
             const { id } = req.params;
             const user = await User.getOne(id);
+            if (!user) return res.send(new Error("No se encontro al usuario"));
             return res.send(user);
         } catch (error) {
             next(error);
