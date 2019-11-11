@@ -16,14 +16,14 @@ const ssl =
         : undefined;
 
 export const config = {
-    connectionLimit: Config.connectionLimit,
+    // connectionLimit: Config.connectionLimit,
     host: Config.host,
     user: Config.user,
     password: Config.password,
     database: Config.database,
     charset: "utf8mb4",
-    ssl,
-    socketPath: env === Env.PRODUCTION ? "/cloudsql/musican:us-central1:musican-bd" : undefined,
+    // ssl,
+    // socketPath: env === Env.PRODUCTION ? "/cloudsql/musican:us-central1:musican-bd" : undefined,
 };
 
 export const poolConn = mysql.createPool(config);

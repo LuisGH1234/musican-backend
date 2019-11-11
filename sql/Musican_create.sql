@@ -4,7 +4,8 @@
 -- tables
 -- Table: cancion
 
-USE musican;
+-- USE musican;
+USE `heroku_f1cf93086df67b3`;
 CREATE TABLE cancion (
     id int  NOT NULL auto_increment,
     nombre int  NOT NULL,
@@ -12,7 +13,7 @@ CREATE TABLE cancion (
     autor nvarchar(150)  NOT NULL,
     dificultad int  NOT NULL,
     valor int  NOT NULL,
-    urlStorage nvarchar(255)  NOT NULL,
+    urlStorage nvarchar(255) NULL,
     CONSTRAINT cancion_pk PRIMARY KEY  (id)
 );
 
